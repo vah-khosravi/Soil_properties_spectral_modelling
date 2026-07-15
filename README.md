@@ -91,6 +91,9 @@ Model evaluation
 
 ## Acknowledgements
 
-This workflow was developed using functions and methodologies available in the **soilspec** package and other open-source R packages for soil spectroscopy and chemometric analysis. The implementation also benefited from the examples and documentation provided with the **soilspec** package.
+This workflow was developed using functions and methodologies available in the **soilspec** package and other open-source R packages for soil spectroscopy and chemometric analysis. The implementation also benefited from the examples and documentation provided with the **soilspec** package developed by (Wadoux et al., 2021)
+
+## Reference
+Wadoux A.M.J.C., Malone B., Minasny B., Fajardo M., McBratney A.B. (2021) Soil Spectral Inference with R. Progress in Soil Science. Springer, Cham. https://doi.org/10.1007/978-3-030-64896-1
 
 ---
