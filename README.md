@@ -1,8 +1,10 @@
-# Soil Spectroscopy Workflow in R
+# Soil Spectroscopy in R
 
-An R workflow for processing Visible–Near Infrared (Vis-NIR) soil spectra and predicting Soil Organic Carbon (SOC) using several machine learning (ML) approaches.
+An R workflow for processing Visible–Near Infrared (Vis–NIR) soil spectra and predicting soil properties using classical chemometric methods and modern machine learning algorithms.
 
-The workflow includes spectral preprocessing, outlier detection, calibration and validation sample selection, model development, and model evaluation.
+The workflow includes spectral preprocessing, outlier detection, calibration/validation sample selection, model development, and standardized model evaluation.
+
+The script has been written to rely primarily on base R whenever possible, using external packages only when specific functionality is required (e.g., spectral preprocessing, machine learning algorithms, and memory-based learning).
 
 ---
 
@@ -19,30 +21,45 @@ This repository includes:
   - First derivative transformation
 - Spectral outlier detection using PCA and Mahalanobis distance
 - Calibration and validation sample selection
-- Principal Component Regression (PCR)
-- Partial Least Squares Regression (PLSR)
-- Cubist regression
-- Random Forest regression
-- Support Vector Regression (SVR)
-- Memory-Based Learning (MBL)
-- Model evaluation using standard performance metrics
+  - Simple Random Sampling (SRS)
+  - Conditioned Latin Hypercube Sampling (cLHS) (optional)   
+- Predictive modelling using:
+  - Principal Component Regression (PCR)
+  - Partial Least Squares Regression (PLSR)
+  - Cubist regression
+  - Random Forest regression
+  - Support Vector Regression (SVR)
+  - Memory-Based Learning (MBL)
+  - Artificial Neural Network (ANN)
+  - Extreme Gradient Boosting (XGBoost)
+- Variable importance visualization
+- Standardized model evaluation
+  - Coefficient of determination (R²)
+  - Root Mean Square Error (RMSE)
+  - Ratio of Performance to Deviation (RPD)
+  - Ratio of Performance to Interquartile Distance (RPIQ)
 
 ---
 
 ## Requirements
 
-The workflow was developed in R and relies on several packages, including:
+The workflow was developed in R and relies primarily on base R, with additional packages used only where necessary.
 
-- soilspec
+Main packages include:
 - prospectr
+- signal
 - Cubist
 - caret
 - randomForest
+- kernlab
 - pls
 - resemble
-- ggplot2
+- chls
+- scatterplot3d
+- nnet
+- xgboost
 
-along with additional supporting packages listed in the script.
+Additional supporting packages are listed at the beginning of the script and are installed automatically if required.
 
 ---
 
@@ -66,6 +83,9 @@ soilspec <- read_csv(file.path(path, "your_data.csv"))
 Raw spectra
       │
       ▼
+Data preparation
+      │
+      ▼
 Spectral preprocessing
       │
       ▼
@@ -81,19 +101,43 @@ Model development
       ├── Cubist
       ├── Random Forest
       ├── SVR
+      ├── ANN
+      ├── XGBoost
       └── MBL
       │
       ▼
-Model evaluation
+Performance evaluation
+      │
+      ▼
+Model comparison
 ```
 
 ---
+## Output
+The workflow generates:
+- Preprocessed spectra
+- PCA results
+- Outlier identification
+- Calibration and validation datasets
+- Model predictions
+- Variable importance plots (where applicable)
+- Calibration and validation scatter plots
+- Performance statistics for each model
 
-## Acknowledgements
+Each model is evaluated using the same metrics:
+- R²
+- RMSE
+- RPD
+- RPIQ
+making comparison among algorithms straightforward.
 
-This workflow was developed using functions and methodologies available in the **soilspec** package and other open-source R packages for soil spectroscopy and chemometric analysis. The implementation also benefited from the examples and documentation provided with the **soilspec** package developed by (Wadoux et al., 2021)
+## Repository structure
 
-## Reference
-Wadoux A.M.J.C., Malone B., Minasny B., Fajardo M., McBratney A.B. (2021) Soil Spectral Inference with R. Progress in Soil Science. Springer, Cham. https://doi.org/10.1007/978-3-030-64896-1
+├── README.md
+├── Soil_Spectroscopy.R
+├── data/
+│   └── your_data.csv
+├── figures/
+└── LICENSE
 
 ---
