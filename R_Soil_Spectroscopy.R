@@ -87,7 +87,7 @@ soil_data <- read_csv(file.path(path, "Spectra.csv"))
 # soil_data <- read_excel(file.path(path, "Spectra.xlsx"))
 
 # Extract spectral variables
-spec <- soil_data[, 4:ncol(soil_data)]
+spec <- soil_data[, 3:ncol(soil_data)]
 
 # Remove spectral columns from the main data frame
 soil_data[, 4:ncol(soil_data)] <- NULL
