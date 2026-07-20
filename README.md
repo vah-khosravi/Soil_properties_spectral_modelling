@@ -129,15 +129,21 @@ Each model is evaluated using the same metrics:
 - RMSE
 - RPD
 - RPIQ
+
 making comparison among algorithms straightforward.
 
 ## Repository structure
 
 ├── README.md
+
 ├── Soil_Spectroscopy.R
+
 ├── data/
+
 │   └── your_data.csv
+
 ├── figures/
+
 └── LICENSE
 
 ---
